@@ -102,9 +102,11 @@ exports.getContactbyId = (req, res) => {
 
 //
 exports.searchProductbyName = (req, res) => {
+
   const searchedField1 = req.query.firstName;
   const searchedField2 = req.query.middleName;
   const searchedField3 = req.query.lastName;
+
   Contact.find({
     firstName: { $regex: searchedField1, $options: "$i" },
     middleName: { $regex: searchedField2, $options: "$i" },
@@ -112,6 +114,7 @@ exports.searchProductbyName = (req, res) => {
   }).then((data) => {
     res.status(200).json({ data });
   });
+  
 };
 
 //
